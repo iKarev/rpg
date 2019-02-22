@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <title>RPG</title>
+  <style>
+    /* body {
+      background-image: url('./src/assets/bg.jpg')
+    } */
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 70vh;
+    }
+
+    .collapsible li.active .collapsible-body{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <rpg-root>
+    <div class="center">
+      <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-red-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </rpg-root>
+</body>
+</html>

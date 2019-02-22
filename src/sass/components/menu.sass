@@ -1,0 +1,47 @@
+.rpg-menu
+  top: 0px
+  &.active
+    & .rpg-menu-content
+      left: 0px
+    & .rpg-menu-button
+      box-shadow: none
+  &-list
+    &.active
+      & .rpg-menu-item
+        height: 48px
+      & .rpg-menu-arrow
+        transform: rotate(180deg)
+  &-arrow
+    transition: .3s
+  &-item
+    height: 0
+    overflow: hidden
+    transition: .3s
+  &-content
+    top: 0
+    padding-top: 7px
+    transition: .3s
+    width: 230px
+    left: -230px
+  &-button
+    z-index: 0
+    margin: 5px
+  & li
+    transition: .3s
+    & a
+      cursor: pointer
+      color: $white
+      display: flex
+      flex-direction: row
+      justify-content: flex-start
+      align-items: center
+      &:hover
+        background-color: #ab47bc
+
+.rpg
+  &-vertical
+    &-devider
+      &__white
+        opacity: .7
+
+

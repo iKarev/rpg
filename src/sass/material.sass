@@ -1,0 +1,397 @@
+$flexTypes: ('row','column')
+$mainPositions: ('start','end','center','space-between','space-around')
+$addPositions: ('start','end','center')
+
+@each $type in $flexTypes
+  .layout
+    &-#{$type}
+      display: flex
+      flex-direction: #{$type}
+      & > .flex
+        flex: 1 1 0%
+        &_5
+          flex: 1 1 5%
+          max-width:  5%
+        &_10
+          flex: 1 1 10%
+          max-width: 10%
+        &_15
+          flex: 1 1 15%
+          max-width: 15%
+        &_20
+          flex: 1 1 20%
+          max-width: 20%
+        &_25
+          flex: 1 1 25%
+          max-width: 25%
+        &_30
+          flex: 1 1 30%
+          max-width: 30%
+        &_33
+          flex: 1 1 33.33%
+          max-width: 33.33%
+        &_35
+          flex: 1 1 35%
+          max-width: 35%
+        &_40
+          flex: 1 1 40%
+          max-width: 40%
+        &_45
+          flex: 1 1 45%
+          max-width: 45%
+        &_50
+          flex: 1 1 50%
+          max-width: 50%
+        &_55
+          flex: 1 1 55%
+          max-width: 55%
+        &_60
+          flex: 1 1 60%
+          max-width: 60%
+        &_65
+          flex: 1 1 65%
+          max-width: 65%
+        &_66
+          flex: 1 1 66.66%
+            max-width: 66.66%
+        &_70
+          flex: 1 1 70%
+          max-width: 70%
+        &_75
+          flex: 1 1 75%
+          max-width: 75%
+        &_80
+          flex: 1 1 80%
+          max-width: 80%
+        &_85
+          flex: 1 1 85%
+          max-width: 85%
+        &_90
+          flex: 1 1 90%
+          max-width: 90%
+        &_95
+          flex: 1 1 95%
+          max-width: 95%
+        &_100
+          flex: 1 1 100%
+          max-width: 100%
+
+@each $type in $flexTypes
+  .layout
+    &-#{$type}
+      display: flex
+      flex-direction: #{$type}
+      & > .flex
+        flex: 1 1 0%
+        &_5
+          flex: 1 1 5%
+          max-height: 5%
+        &_10
+          flex: 1 1 10%
+          max-height: 10%
+        &_15
+          flex: 1 1 15%
+          max-height: 15%
+        &_20
+          flex: 1 1 20%
+          max-height: 20%
+        &_25
+          flex: 1 1 25%
+          max-height: 25%
+        &_30
+          flex: 1 1 30%
+          max-height: 30%
+        &_33
+          flex: 1 1 33.33%
+          max-height: 33.33%
+        &_35
+          flex: 1 1 35%
+          max-height: 35%
+        &_40
+          flex: 1 1 40%
+          max-height: 40%
+        &_45
+          flex: 1 1 45%
+          max-height: 45%
+        &_50
+          flex: 1 1 50%
+          max-height: 50%
+        &_55
+          flex: 1 1 55%
+          max-height: 55%
+        &_60
+          flex: 1 1 60%
+          max-height: 60%
+        &_65
+          flex: 1 1 65%
+          max-height: 65%
+        &_66
+          flex: 1 1 66.66%
+          max-height: 66.66%
+        &_70
+          flex: 1 1 70%
+          max-height: 70%
+        &_75
+          flex: 1 1 75%
+          max-height: 75%
+        &_80
+          flex: 1 1 80%
+          max-height: 80%
+        &_85
+          flex: 1 1 85%
+          max-height: 85%
+        &_90
+          flex: 1 1 90%
+          max-height: 90%
+        &_95
+          flex: 1 1 95%
+          max-height: 95%
+        &_100
+          flex: 1 1 100%
+          max-height: 100%
+            
+    &-wrap
+      flex-wrap: wrap
+
+.layout-align
+  @each $main in $mainPositions
+    @each $add in $addPositions
+      &-#{$main}-#{$add}
+        @if ($main == 'start')
+          justify-content: flex-#{$main} !important
+        @else if ($main == 'end')
+          justify-content: flex-#{$main} !important
+        @else
+          justify-content: #{$main} !important
+      
+        @if ($add == 'start')
+          align-items: flex-#{$add} !important
+        @else if ($add == 'end')
+          align-items: flex-#{$add} !important
+        @else
+          align-items: #{$add} !important
+
+.of_
+  &a
+    overflow: auto
+  &h
+    overflow: hidden
+  &v
+    overflow: visible
+  &s
+    overflow: scroll
+
+.bs
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)
+  &_primary
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2)
+
+$maxes: [50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800]
+$params: ['height', 'width']
+.max
+  @each $param in $params
+    &#{$param}
+      @each $max in $maxes
+        &_#{$max}
+          max-#{$param}: #{$max}px
+.min
+  @each $param in $params
+    &#{$param}
+      @each $max in $maxes
+        &_#{$max}
+          min-#{$param}: #{$max}px
+
+.flex
+  &_1
+    flex: 1
+
+$indents: [0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32]
+$sizes: [5,10,15,20,25,30,33,35,40,45,50,55,60,65,66,70,75,80,85,90,95,100]
+rpg-root
+  &
+  @each $indent in $indents
+    .m
+      &_#{$indent}
+        margin: #{$indent}px !important
+      &t_#{$indent}
+        margin-top: #{$indent}px !important
+      &b_#{$indent}
+        margin-bottom: #{$indent}px !important
+      &l_#{$indent}
+        margin-left: #{$indent}px !important
+      &r_#{$indent}
+        margin-right: #{$indent}px !important
+      &v_#{$indent}
+        margin-top: #{$indent}px !important
+        margin-bottom: #{$indent}px !important
+      &h_#{$indent}
+        margin-left: #{$indent}px !important
+        margin-right: #{$indent}px !important
+    .p
+      &_#{$indent}
+        padding: #{$indent}px !important
+      &t_#{$indent}
+        padding-top: #{$indent}px !important
+      &b_#{$indent}
+        padding-bottom: #{$indent}px !important
+      &l_#{$indent}
+        padding-left: #{$indent}px !important
+      &r_#{$indent}
+        padding-right: #{$indent}px !important
+      &v_#{$indent}
+        padding-top: #{$indent}px !important
+        padding-bottom: #{$indent}px !important
+      &h_#{$indent}
+        padding-left: #{$indent}px !important
+        padding-right: #{$indent}px !important
+  .w_
+    &5 
+      width: 5%
+    &10 
+      width: 10%
+    &15 
+      width: 15%
+    &20 
+      width: 20%
+    &25 
+      width: 25%
+    &30 
+      width: 30%
+    &33 
+      width: 33%
+    &35 
+      width: 35%
+    &40 
+      width: 40%
+    &45 
+      width: 45%
+    &50 
+      width: 50%
+    &55 
+      width: 55%
+    &60 
+      width: 60%
+    &65 
+      width: 65%
+    &66 
+      width: 66%
+    &70 
+      width: 70%
+    &75 
+      width: 75%
+    &80 
+      width: 80%
+    &85 
+      width: 85%
+    &90 
+      width: 90%
+    &95 
+      width: 95%
+    &100 
+      width: 100%
+  .h_
+    &5 
+      height: 5%
+    &10 
+      height: 10%
+    &15 
+      height: 15%
+    &20 
+      height: 20%
+    &25 
+      height: 25%
+    &30 
+      height: 30%
+    &33 
+      height: 33%
+    &35 
+      height: 35%
+    &40 
+      height: 40%
+    &45 
+      height: 45%
+    &50 
+      height: 50%
+    &55 
+      height: 55%
+    &60 
+      height: 60%
+    &65 
+      height: 65%
+    &66 
+      height: 66%
+    &70 
+      height: 70%
+    &75 
+      height: 75%
+    &80 
+      height: 80%
+    &85 
+      height: 85%
+    &90 
+      height: 90%
+    &95 
+      height: 95%
+    &100 
+      height: 100%
+    &max
+      height: 100vh
+
+$colors: ['lightgray', 'white', 'danger', 'activatedRow', 'primary', 'gray', 'warning', 'danger', 'success', 'info', 'rose']
+
+.color
+  @each $color in $colors
+    &_#{$color}
+      color: #{$color} !important
+
+.b
+  &t
+    @each $color in $colors
+      &_#{$color}
+        border-top: 1px solid #{$color}
+
+.ta
+  &-c
+    text-align: center
+  &-l
+    text-align: left
+  &-r
+    text-align: right
+  &-j
+    text-align: justify
+
+.td
+  &_n
+    text-decoration: none
+
+.nowrap
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.img
+  &-contain
+    max-width: -webkit-fill-available
+
+.cursor
+  &-pointer
+    cursor: pointer
+  &-default
+    cursor: default
+
+.opacity
+    &_7
+      opacity: .7
+
+.noselect
+  user-select: none
+
+.user-events
+  &_none
+    user-select: none
+    pointer-events: none
+
+.absolute
+  position: absolute
+.fixed
+  position: fixed
