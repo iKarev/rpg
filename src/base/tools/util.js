@@ -42,13 +42,14 @@ const _ = {
     return JSON.stringify(obj)
   },
 
-  addListener(obj, callback) {
+  addListener(obj, callback, prop) {
     return new Proxy(obj, {
       set: (target, key, value) => {
-        console.log(target, key, value)
         target[key] = value
-        callback()
-        return target[key]
+        if (!prop || prop === key)
+          callback(target[key], value)
+
+        return true
       }
     })
   }

@@ -5,9 +5,8 @@ class RPGHeader extends RPGComponent {
   constructor(config) {
     super(config)
     this.data = {
-      loggedIn: _.addListener(userService.user, this.render.bind(this)).loggedIn
-    }    
-    setInterval(() => console.log(this.data.loggedIn), 3000)
+      loggedIn: userService.listen('loggedIn', this.fit.bind(this, 'loggedIn')),
+    }
   }
 
   events() {
@@ -43,15 +42,6 @@ class RPGHeader extends RPGComponent {
 export const rpgHeader = new RPGHeader({
   selector: 'rpg-header',
   template: /*html*/`
-    <!--<nav class="blue-grey">
-      <div class="nav-wrapper">
-        <a href="#" style="margin-left: 20px;">О введении экспортных пошлин в имперской провинции</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Home</a></li>
-          <li><a href="#tabs">Tabs</a></li>
-        </ul>
-      </div>
-    </nav>-->
     <div class="rpg-menu fixed h_max">
       <a class="rpg-menu-button btn-floating btn-large purple">
         <i class="large material-icons">menu</i>

@@ -26,11 +26,8 @@ export class Component {
     }
   }
 
-  setComputed(prop, value) {
-    console.log(this.data[prop])
-    console.log(value)
-    this.data[prop] = value
-    this.render()
+  fit(prop, payload) {
+    this.data[prop] = payload
   }
 
   listenForChanges() {

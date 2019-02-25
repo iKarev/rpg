@@ -5,7 +5,12 @@ class UserService {
     this.headers = {
       "Content-Type": "application/json"
     }
-    this.user = {loggedIn: this.checkLoggedIn()}
+    this.store = {loggedIn: this.checkLoggedIn()}
+  }
+
+  listen(prop, callback) {
+    this.store = _.addListener(this.store, callback, prop)
+    return this.store[prop]
   }
 
   login(data) {
@@ -13,9 +18,7 @@ class UserService {
     http.post('/users/sign_in', options)
       .then(response => {
         this.setToken(`bearer ${response.token}`)
-        console.log(this.user.loggedIn)
-        this.user.loggedIn = this.checkLoggedIn()
-        console.log(this.user.loggedIn)
+        this.store.loggedIn = this.checkLoggedIn()
       })
       // .catch(err => console.log(err.message))
   }
