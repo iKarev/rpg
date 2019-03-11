@@ -1,4 +1,5 @@
 import { http } from 'core'
+import { regexpID } from './regexp'
 
 const _ = {
   delay(ms = 10) {
@@ -38,7 +39,7 @@ const _ = {
     return target
   },
 
-  string(obj) {
+  toString(obj) {
     return JSON.stringify(obj)
   },
 
@@ -52,6 +53,12 @@ const _ = {
         return true
       }
     })
+  },
+
+  history: {
+    path(url) {
+      window.history.pushState({}, null, url)
+    }
   }
 }
 

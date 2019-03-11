@@ -1,12 +1,42 @@
-import { RPGComponent, _, $ } from "core";
+import { RPGComponent, router, _, $ } from "core";
 import { userService } from '../services/user.service'
+import { gameService } from '../services/game.service'
+
+const authItems = [
+  getMenuItem('vpn_key', 'Авторизация', 'list', 'login'),
+  getMenuItem('exit_to_app', 'Выйти', 'list', null, 'rpg-menu-item-logout')
+]
+
+function getMenuItem(icon, text, type, route, classes) {
+  return /*html*/`
+  <li class="rpg-menu-${type}">
+    <a ${route ? 'href="#' + route + '"' : '' }
+      class="${type === 'list' ? 'p_16 rpg-menu-header' : 'pl_32 pr_12 pv_12'}  ${classes}">
+      <i class="material-icons">${icon}</i>
+      <span class="ml_8">${text}</span>
+    </a>
+  </li>
+  `
+}
 
 class RPGHeader extends RPGComponent {
   constructor(config) {
     super(config)
     this.data = {
-      loggedIn: userService.listen('loggedIn', this.fit.bind(this, 'loggedIn')),
+      loggedIn: userService.listen('loggedIn', this.onLogIn.bind(this)),
+      games: ''
     }
+    this.data.menuItemAuth = authItems[this.data.loggedIn ? 1 : 0]
+  }
+
+  onInit() {
+    gameService.getGameList().then(res => {
+      let games = ''
+      for (const game of res) {
+        games += getMenuItem('flag', game.title, 'item', `games/${game._id}`)
+      }
+      this.data.games = games
+    })
   }
 
   events() {
@@ -15,7 +45,18 @@ class RPGHeader extends RPGComponent {
       'click .rpg-menu-button': 'switchMenu',
       'mouseleave .rpg-menu-content': 'closeMenu',
       'click .rpg-menu-header': 'switchMenuSection',
+      'click .rpg-menu-item-logout': 'onLogOut',
     }
+  }
+
+  onLogIn(val) {
+    this.fit({loggedIn: val, menuItemAuth: authItems[1]})
+    router.navigate('')
+  }
+  onLogOut() {
+    userService.logout()
+    this.fit({loggedIn: false, menuItemAuth: authItems[0]})
+    router.navigate('login')
   }
 
   closeMenu(e) {
@@ -43,17 +84,29 @@ export const rpgHeader = new RPGHeader({
   selector: 'rpg-header',
   template: /*html*/`
     <div class="rpg-menu fixed h_max">
-      <a class="rpg-menu-button btn-floating btn-large purple">
+      <a class="rpg-menu-button btn-floating btn-large blue">
         <i class="large material-icons">menu</i>
       </a>
-      <section class="rpg-menu-content absolute h_100 purple">
-        {{ loggedIn }}
+      <section class="rpg-menu-content absolute h_100 blue lighten-2">
         <ul class="m_0">
+          {{ menuItemAuth }}
           <li class="rpg-menu-list">
-            <a href="#login" class="p_16 rpg-menu-header">
-              <i class="material-icons">vpn_key</i>
-              <span class="ml_8">Авторизация</span>
+            <a class="p_16 rpg-menu-header layout-row layout-align-space-between-start">
+              <span class="layout-row layout-align-start-center">
+                <i class="material-icons">public</i>
+                <span class="ml_8">Игры</span>
+              </span>
+              <i class="material-icons rpg-menu-arrow">arrow_drop_down</i>
             </a>
+            <ul class="rpg-menu-children">
+              {{ games }}
+              <li class="rpg-menu-item">
+                <a href="#games/new" class="pl_32 pr_12 pv_12">
+                  <i class="material-icons">plus_one</i>
+                  <span class="ml_8">Создать игру</span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
         <hr class="rpg-vertical-devider__white" />

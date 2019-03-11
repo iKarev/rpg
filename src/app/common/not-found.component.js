@@ -8,7 +8,7 @@ class NotFound extends RPGComponent {
 
 export const notFound = new NotFound({
   selector: 'rpg-not-found',
-  template: `
+  template: /*html*/`
     <div class="center">
       <h2>404 Page not found</h2>
       <a href="#">На главную</a>

@@ -63,10 +63,10 @@ class DOMManipulator {
     return Array.from(this.nativeElement.querySelectorAll(selector)).map(el => $(el))
   }
   formData() {
-    const formFields = {INPUT: true, TEXTAREA: true}
+    const formFields = {INPUT: true, TEXTAREA: true, SELECT: true}
     const result = {}
     Array.from(this.nativeElement).forEach(el => {
-      if (formFields[el.nodeName])
+      if (formFields[el.nodeName] && el.id)
         result[el.id] = el.value
     })
     return result

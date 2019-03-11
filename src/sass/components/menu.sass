@@ -1,5 +1,7 @@
 .rpg-menu
   top: 0px
+  z-index: 10
+
   &.active
     & .rpg-menu-content
       left: 0px
@@ -22,7 +24,8 @@
     padding-top: 7px
     transition: .3s
     width: 230px
-    left: -230px
+    left: -240px
+    box-shadow: 4px 0px 13px rgba(0,0,0,.7)
   &-button
     z-index: 0
     margin: 5px
@@ -36,7 +39,7 @@
       justify-content: flex-start
       align-items: center
       &:hover
-        background-color: #ab47bc
+        background-color: rgba(33, 150, 243, .3)
 
 .rpg
   &-vertical

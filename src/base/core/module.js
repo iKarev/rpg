@@ -16,7 +16,7 @@ export class Module {
 
   start() {
     initComponents(this.bootstrapComponent, this.components)
-    initRouting(this.routes, this.dispatcher)
+    initRouting(this.routes, this.dispatcher, this.components)
     initDirectives(this.directives)
 
     this.dispatcher.on('routing.change-page', () => initDirectives(this.directives))

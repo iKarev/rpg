@@ -1,5 +1,6 @@
 import { Module as RPGModule } from './core/module'
 import { Component as RPGComponent } from './core/component'
+import { Service as RPGService } from './core/service'
 import { Directive as RPGDirective } from './core/directives/directive'
 import { bootstrap } from './core/bootstrap'
 
@@ -11,6 +12,7 @@ import { router } from './core/routing/router'
 export {
   RPGModule,
   RPGComponent,
+  RPGService,
   RPGDirective,
   bootstrap,
   _,

@@ -1,0 +1,35 @@
+.rpg
+  &-tabs
+    border-left: none
+    border-right: none
+    &-tab
+      &-title
+        transition: .3s
+        color: $primary
+        cursor: pointer
+        border-top: 1px solid rgba(0,0,0,.2)
+        border-bottom: 1px solid rgba(0,0,0,.2)
+        &.active
+          background-color: $primary-light
+          border-top: 1px solid $primary
+          border-bottom: 1px solid $primary
+    &-content
+      overflow: hidden
+      position: relative
+      height: 70vh
+      &-exit
+        position: absolute
+        top: 0
+        width: 100%
+        animation: hide .5s 1 linear
+        transform: translateX(100%)
+        &.revert
+          animation: hide-revert .5s 1 linear
+
+      &-active
+        position: relative
+        z-index: 1
+        animation: arrival .5s 1 linear
+        &.revert
+          animation: arrival-revert .5s 1 linear
+

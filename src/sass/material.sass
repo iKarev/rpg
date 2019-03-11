@@ -205,6 +205,14 @@ $params: ['height', 'width']
   &_1
     flex: 1
 
+$directions: ['left','top','right','bottom']
+$distances: [0,4,8,12,16,20,24,28,32]
+@each $dir in $directions
+  .#{$dir}
+    @each $dis in $distances
+      &#{$dis}
+        #{$dir}: #{$dis}px
+
 $indents: [0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32]
 $sizes: [5,10,15,20,25,30,33,35,40,45,50,55,60,65,66,70,75,80,85,90,95,100]
 rpg-root
@@ -392,6 +400,14 @@ $colors: ['lightgray', 'white', 'danger', 'activatedRow', 'primary', 'gray', 'wa
     pointer-events: none
 
 .absolute
-  position: absolute
+  position: absolute !important
 .fixed
-  position: fixed
+  position: fixed !important
+.relative
+  position: relative !important
+.static
+  position: static !important
+
+.trans
+  &5
+    transition: .5s

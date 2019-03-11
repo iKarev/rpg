@@ -1,0 +1,28 @@
+.rpg
+  &-game
+    &-new
+      &-description
+        min-height: 150px
+  &-description
+    &-edit
+      position: absolute
+      top: 0
+      opacity: 0
+      transition: .5s
+      transform: translateX(110%)
+      &.active
+        opacity: 1
+        transform: translateX(0)
+    &-show
+      opacity: 1
+      transition: .5s
+      &.remove
+        opacity: 0
+        transform: translateX(-110%)
+  &-info, &-roles
+    &-tab
+      opacity: 0
+      display: none
+      &.active
+        opacity: 1
+        display: block
